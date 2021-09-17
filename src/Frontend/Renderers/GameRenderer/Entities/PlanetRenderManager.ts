@@ -90,6 +90,28 @@ export default class PlanetRenderManager {
       );
     }
 
+    // draw silver bar 
+    let cS = 1.3; // circle alpha
+    if (renderInfo.radii.radiusPixels < 2 * maxRadius) {
+      cS *= renderInfo.radii.radiusPixels / (2 * maxRadius);
+    }
+
+    if (hasOwner(planet)) {
+      color[3] = cS * 120;
+      cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.5, [...gold, color[3]], 0.5);
+      const pct = planet.silver / planet.silverCap;
+      color[3] = cS * 255;
+      cR.queueCircleWorld(
+        planet.location.coords,
+        renderInfo.radii.radiusWorld * 1.5,
+        [...gold, color[3]],
+        4,
+        pct
+      );
+    }
+
+
+
     this.queueHat(planet, planet.location.coords, renderInfo.radii.radiusWorld);
 
     /* draw text */
