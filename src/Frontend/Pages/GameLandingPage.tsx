@@ -695,9 +695,7 @@ export function GameLandingPage() {
       terminal.current?.println(
         "This is the Dark Forest interactive JavaScript terminal. Only use this if you know exactly what you're doing."
       );
-      terminal.current?.println('');
-      terminal.current?.println('Try running: df.getAccount()');
-      terminal.current?.println('');
+      terminal.current?.println('Dark Forest client modified v0.1 by @tofu4956');
     },
     []
   );
