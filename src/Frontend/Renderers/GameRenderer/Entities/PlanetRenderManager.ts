@@ -78,17 +78,39 @@ export default class PlanetRenderManager {
 
     if (hasOwner(planet)) {
       color[3] = cA * 120;
-      cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.1, color, 0.5);
+      cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1, color, 0.5);
       const pct = planet.energy / planet.energyCap;
       color[3] = cA * 255;
       cR.queueCircleWorld(
         planet.location.coords,
-        renderInfo.radii.radiusWorld * 1.1,
+        renderInfo.radii.radiusWorld * 1,
         color,
         2,
         pct
       );
     }
+
+    // draw silver bar 
+    let cS = 1.0; // circle alpha
+    if (renderInfo.radii.radiusPixels < 2 * maxRadius) {
+      cS *= renderInfo.radii.radiusPixels / (2 * maxRadius);
+    }
+
+    if (hasOwner(planet)) {
+      color[3] = cS * 120;
+      cR.queueCircleWorld(planet.location.coords, renderInfo.radii.radiusWorld * 1.1, [...gold, color[3]], 0.5);
+      const pct = planet.silver / planet.silverCap;
+      color[3] = cS * 255;
+      cR.queueCircleWorld(
+        planet.location.coords,
+        renderInfo.radii.radiusWorld * 1.1,
+        [...gold, color[3]],
+        2,
+        pct
+      );
+    }
+
+
 
     this.queueHat(planet, planet.location.coords, renderInfo.radii.radiusWorld);
 
@@ -190,7 +212,7 @@ export default class PlanetRenderManager {
     if (planet.silverGrowth > 0 || planet.silver > 0) {
       tR.queueTextWorld(
         formatNumber(silver),
-        { x: center.x, y: center.y + 1.1 * radius + 0.75 },
+        { x: center.x, y: center.y + 1.1 * radius + 1.25 },
         [...gold, alpha],
         0,
         TextAlign.Center,
