@@ -202,6 +202,22 @@ export function GameLandingPage() {
         TerminalTextStyle.Text
       );
       terminal.current?.newline();
+
+      terminal.current?.print('    v0.6 r3    ', TerminalTextStyle.Text);
+      terminal.current?.print('08/22/2021        ', TerminalTextStyle.Text);
+      terminal.current?.printLink(
+        '@orden_gg',
+        () => {
+          window.open('https://twitter.com/orden_gg');
+        },
+        TerminalTextStyle.Text
+      );
+      terminal.current?.newline();
+
+      terminal.current?.print('    v0.6 r4    ', TerminalTextStyle.Text);
+      terminal.current?.print('10/01/2021        ', TerminalTextStyle.Text);
+      terminal.current?.print('t.b.d');
+      terminal.current?.newline();
       terminal.current?.newline();
 
       const accounts = getAccounts();
@@ -479,8 +495,9 @@ export function GameLandingPage() {
 
       terminal.current?.print('Enter your email address. ', TerminalTextStyle.Text);
       terminal.current?.println("We'll use this email address to notify you if you win a prize.");
+
       const email = (await terminal.current?.getInput()) || '';
-      const response = await submitPlayerEmail(email, address);
+      const response = await submitPlayerEmail(await ethConnection?.signMessageObject({ email }));
 
       if (response === EmailResponse.Success) {
         terminal.current?.println('Email successfully recorded.');

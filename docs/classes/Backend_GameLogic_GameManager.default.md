@@ -184,7 +184,6 @@
 - [setPlayerTwitters](Backend_GameLogic_GameManager.default.md#setplayertwitters)
 - [setRadius](Backend_GameLogic_GameManager.default.md#setradius)
 - [setSnarkCacheSize](Backend_GameLogic_GameManager.default.md#setsnarkcachesize)
-- [signMessage](Backend_GameLogic_GameManager.default.md#signmessage)
 - [softRefreshPlanet](Backend_GameLogic_GameManager.default.md#softrefreshplanet)
 - [spaceTypeFromPerlin](Backend_GameLogic_GameManager.default.md#spacetypefromperlin)
 - [spaceTypePerlin](Backend_GameLogic_GameManager.default.md#spacetypeperlin)
@@ -195,6 +194,7 @@
 - [submitDisconnectTwitter](Backend_GameLogic_GameManager.default.md#submitdisconnecttwitter)
 - [submitPlanetMessage](Backend_GameLogic_GameManager.default.md#submitplanetmessage)
 - [submitVerifyTwitter](Backend_GameLogic_GameManager.default.md#submitverifytwitter)
+- [testNotification](Backend_GameLogic_GameManager.default.md#testnotification)
 - [transferOwnership](Backend_GameLogic_GameManager.default.md#transferownership)
 - [updateDiagnostics](Backend_GameLogic_GameManager.default.md#updatediagnostics)
 - [upgrade](Backend_GameLogic_GameManager.default.md#upgrade)
@@ -2603,30 +2603,6 @@ Changes the amount of move snark proofs that are cached.
 
 ---
 
-### signMessage
-
-▸ `Private` **signMessage**<`T`\>(`obj`): `Promise`<`SignedMessage`<`T`\>\>
-
-Returns a signed version of this message.
-
-#### Type parameters
-
-| Name |
-| :--- |
-| `T`  |
-
-#### Parameters
-
-| Name  | Type |
-| :---- | :--- |
-| `obj` | `T`  |
-
-#### Returns
-
-`Promise`<`SignedMessage`<`T`\>\>
-
----
-
 ### softRefreshPlanet
 
 ▸ `Private` **softRefreshPlanet**(`planetId`): `Promise`<`void`\>
@@ -2797,6 +2773,16 @@ process by telling the Dark Forest webserver to look at that tweet.
 #### Returns
 
 `Promise`<`boolean`\>
+
+---
+
+### testNotification
+
+▸ **testNotification**(): `void`
+
+#### Returns
+
+`void`
 
 ---
 
